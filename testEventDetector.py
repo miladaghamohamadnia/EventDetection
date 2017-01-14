@@ -123,21 +123,6 @@ def invGaus_outliers(pop, freq, invGaus_factor, cluster_dist, bw_max, smooth_N, 
 	outliers = container
 	print "outliers after clustering:  ", outliers
 
-	# # find the width of events
-	# bandwidths = []
-	# for event_center in outliers:
-	# 	container = []
-	# 	indexes = np.array(range(2,bw_max))**2
-	# 	for bw in indexes:
-	# 		data = pop[range(event_center-bw/2,event_center+bw/2)]
-	# 		miu, stdd = invGaus_fit(data)
-	# 		miu_std = stdd/miu
-	# 		container.append(miu_std)
-	# 		# print event_center, bw, miu, stdd, miu_std
-	# 	x = runningMeanFast(np.array(container), smooth_N)
-	# 	bandwidths.append(indexes[np.argmax(np.array(x))]/width_exagg)
-	# 	# print "BW: ", indexes[np.argmax(np.array(x))], indexes[np.argmax(np.array(x))]/width_exagg
-	
 	# find the width of events
 	data = pop
 	trshd = data.mean()
