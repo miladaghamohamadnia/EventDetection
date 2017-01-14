@@ -42,24 +42,21 @@ def frbsSorter(REF):
 	print df.shape
 	return df
 
-path = '//Users//miladaghamohamadnia//Google Drive//Not categorized stuff//temp files//21aug2016_22PM.xlsx'
-df = pd.read_excel(path)
+# path = '//Users//miladaghamohamadnia//Google Drive//Not categorized stuff//temp files//21aug2016_22PM.xlsx'
+# df = pd.read_excel(path)
+REF = firebase.FirebaseApplication('https://esp001-864dd.firebaseio.com', None)
+df = frbsSorter(REF)
+df.columns = ['Miliseconds', 'Timestamps', 'Values']
+
 df.sort_values(['Miliseconds'], ascending=[True], inplace=True)
 df.reset_index(drop=True, inplace=True)
 df = df[30000:]
 timesSample = pd.to_datetime(df['Timestamps'])
 totalseconds = (timesSample.max()-timesSample.min()).total_seconds()
 samples = np.array(df.Values)
-# print samples.shape[0]
-# print totalseconds
 freq = samples.shape[0]/totalseconds
 
 
-# REF = firebase.FirebaseApplication('https://esp001-864dd.firebaseio.com', None)
-# df = frbsSorter(REF)
-# timesSample = pd.to_datetime(df['timestamps'])
-# samples = np.array(df.value)
-	
 
 
 def autocorr(sig, lag):
