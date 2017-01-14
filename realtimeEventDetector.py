@@ -86,7 +86,7 @@ def runningMeanFast(x, N):
 def invGaus_outliers(pop, freq, invGaus_factor, cluster_dist, bw_max, smooth_N, width_exagg):
 	print "###  invGaus_outliers  ###"
 	dist_mu, dist_std = invGaus_fit(pop)
-	print dist_mu, dist_std
+	# print dist_mu, dist_std
 	# find the inverse gaussian lower confidence interval
 	CI_l = dist_mu-invGaus_factor*dist_std
 	excessVals = pop[pop<CI_l].index.tolist()
@@ -235,7 +235,7 @@ print modif_diff_outliers, modif_diff_bandwidths
 
 
 ##
-if (len(jenkins_outliers)!=0 || len(jenkins_outliers)!=0):
+if (len(jenkins_outliers)!=0 or len(jenkins_outliers)!=0):
 	# Two subplots, unpack the axes array immediately
 	f, (ax1, ax2, ax3, ax4, ax5,ax6) = plt.subplots(6, 1, sharex=True)
 	ax1.plot(np.array(df.Timestamps)[:], JenkinsTest)

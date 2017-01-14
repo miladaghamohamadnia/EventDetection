@@ -89,7 +89,7 @@ def runningMeanFast(x, N):
 def invGaus_outliers(pop, freq, invGaus_factor, cluster_dist, bw_max, smooth_N, width_exagg):
 	print "###  invGaus_outliers  ###"
 	dist_mu, dist_std = invGaus_fit(pop)
-	print dist_mu, dist_std
+	# print dist_mu, dist_std
 	# find the inverse gaussian lower confidence interval
 	CI_l = dist_mu-invGaus_factor*dist_std
 	excessVals = pop[pop<CI_l].index.tolist()
