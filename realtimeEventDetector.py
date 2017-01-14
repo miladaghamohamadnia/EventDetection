@@ -234,6 +234,7 @@ print modif_diff_outliers, modif_diff_bandwidths
 # anomaly_tester(jenkins_outliers, jenkins_bandwidths,modif_diff_outliers, modif_diff_bandwidths)
 
 
+##
 if (len(jenkins_outliers)!=0 || len(jenkins_outliers)!=0):
 	# Two subplots, unpack the axes array immediately
 	f, (ax1, ax2, ax3, ax4, ax5,ax6) = plt.subplots(6, 1, sharex=True)
