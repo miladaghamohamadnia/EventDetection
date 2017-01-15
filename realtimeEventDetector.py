@@ -50,7 +50,7 @@ df.columns = ['Miliseconds', 'Timestamps', 'Values']
 
 df.sort_values(['Miliseconds'], ascending=[True], inplace=True)
 df.reset_index(drop=True, inplace=True)
-df = df[30000:]
+# df = df[30000:]
 timesSample = pd.to_datetime(df['Timestamps'])
 totalseconds = (timesSample.max()-timesSample.min()).total_seconds()
 samples = np.array(df.Values)
@@ -131,12 +131,14 @@ def invGaus_outliers(pop, freq, invGaus_factor, cluster_dist, bw_max, smooth_N, 
 		bw_l=event_center-1
 		bw_h=event_center+1
 		while k<int(freq*bw_max):
+			if bw_l<0 or bw_h>len(data)-1: continue
 			if data[bw_l]<=trshd:
 				bw_l-=1
 			else: break
 			k=k+1
 		k=0
 		while k<int(freq*bw_max):
+			if bw_l<0 or bw_h>len(data)-1: continue
 			if data[bw_h]<=trshd:
 				bw_h+=1
 			else: break
@@ -196,12 +198,14 @@ def Gaus_outliers(pop, freq, Gaus_factor, cluster_dist, bw_max, trshd_coeff, wid
 		bw_l=event_center-1
 		bw_h=event_center+1
 		while k<int(freq*bw_max):
+			if bw_l<0 or bw_h>len(data)-1: continue
 			if data[bw_l]>=trshd:
 				bw_l-=1
 			else: break
 			k=k+1
 		k=0
 		while k<int(freq*bw_max):
+			if bw_l<0 or bw_h>len(data)-1: continue
 			if data[bw_h]>=trshd:
 				bw_h+=1
 			else: break

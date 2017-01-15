@@ -21,7 +21,7 @@ def frbsSorter(REF):
 	values      = []
 	# keys        = []
 	k = 0
-	result = REF.get('/001', None)
+	result = REF.get('/002', None)
 	for key, value in result.items():
 	    k+=1
 	    ms = value['timestamp']
